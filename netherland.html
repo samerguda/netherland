@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 50%;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<body>
+
+    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Sound Table</h1>
+
+
+    <a href="https://www.lingohut.com/ar/l80/تعلم-اللغة-الهولندية">تعلم</a>
+    <br>
+     <br>
+    <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for sounds...">
+    <table id="soundTable">
+        <thead>
+            <tr>
+                <th>Button</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><button onclick="playSound('netherland recording/hallo.m4a')">Click</button></td>
+                <td>Hallo</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording/goedemorgen.m4a')">Click</button></td>
+                <td>Goedemorgen</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording/goedemiddag.m4a')">Click</button></td>
+                <td>Goedemiddag</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording/goedenacht.m4a')">Click</button></td>
+                <td>Goedenacht</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording/wat is jouw naam.m4a')">Click</button></td>
+                <td>Wat is jouw naam?</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording/')">Click</button></td>
+                <td>Mijn naam is</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording/sorry ik heb je niet gehoord.m4a')">Click</button></td>
+                <td>Sorry, ik heb je niet gehoord</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording/waar woon je.m4a')">Click</button></td>
+                <td>Waar woon je?</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording/waar kom je vandaan.m4a')">Click</button></td>
+                <td>Waar kom je vandaan?</td>
+            </tr>
+            <tr>
+                <td><button onclick="playSound('netherland recording')">AAAAAAAAAA</button></td>
+                <td>Sound 10</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+
+    <script>
+        function playSound(sound) {
+    let audio = new Audio(sound);
+    audio.play();
+}
+
+function filterTable() {
+    let input = document.getElementById('searchInput');
+    let filter = input.value.toLowerCase();
+    let table = document.getElementById('soundTable');
+    let tr = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < tr.length; i++) {
+        let td = tr[i].getElementsByTagName('td')[1];
+        if (td) {
+            let txtValue = td.textContent || td.innerText;
+            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = '';
+            } else {
+                tr[i].style.display = 'none';
+            }
+        }       
+    }
+}
+
+    </script>
+</body>
+</html>
